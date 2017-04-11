@@ -8,14 +8,14 @@ use Yii;
  * This is the model class for table "news".
  *
  * @property integer $id
- * @property string $Complete_Name
+ * @property string $fullName
+ * @property string $nickName
+ * @property string $email
+ * @property string $address
+ * @property string $gender
+ * @property integer $cellphoneNumber
+ * @property string $comments
  * @property string $slug
- * @property string $Nickname
- * @property string $Email_Address
- * @property string $Home_Address
- * @property string $Gender
- * @property string $Cellphone_Number
- * @property string $Comments
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -33,11 +33,13 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Complete_Name', 'slug', 'Nickname', 'Email_Address', 'Gender', 'Cellphone_Number'], 'required'],
-            [['Nickname', 'Email_Address', 'Comments'], 'string'],
-            [['Complete_Name', 'slug', 'Home_Address'], 'string', 'max' => 128],
-            [['Gender'], 'string', 'max' => 1],
-            [['Cellphone_Number'], 'string', 'max' => 20],
+            [['fullName', 'nickName', 'email', 'address', 'gender', 'cellphoneNumber', 'comments', 'slug'], 'required'],
+            [['cellphoneNumber'], 'integer'],
+            [['fullName', 'nickName'], 'string', 'max' => 25],
+            [['email', 'address'], 'string', 'max' => 100],
+            [['gender'], 'string', 'max' => 1],
+            [['comments'], 'string', 'max' => 150],
+            [['slug'], 'string', 'max' => 128],
         ];
     }
 
@@ -48,14 +50,14 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'Complete_Name' => 'Complete  Name',
+            'fullName' => 'Full Name',
+            'nickName' => 'Nick Name',
+            'email' => 'Email',
+            'address' => 'Address',
+            'gender' => 'Gender',
+            'cellphoneNumber' => 'Cellphone Number',
+            'comments' => 'Comments',
             'slug' => 'Slug',
-            'Nickname' => 'Nickname',
-            'Email_Address' => 'Email  Address',
-            'Home_Address' => 'Home  Address',
-            'Gender' => 'Gender',
-            'Cellphone_Number' => 'Cellphone  Number',
-            'Comments' => 'Comments',
         ];
     }
 }
